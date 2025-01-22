@@ -9,7 +9,7 @@ pipeline {
     stages {
        steps {
             script {
-                    // Dynamically determine the GIT_TAG
+                    // Dynamically the GIT_TAG
                     env.GIT_TAG = sh(script: "git describe --tags --exact-match || echo ''", returnStdout: true).trim()
                     
                     if (!env.GIT_TAG) {
