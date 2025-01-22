@@ -31,9 +31,7 @@ pipeline {
     //   }
     // }
     stage('Install Dependencies') {
-      when {
-        branch 'main'
-      }
+      
       steps {
         echo 'Installing dependencies...'
         bat 'npm install --force'
@@ -41,9 +39,7 @@ pipeline {
     }
 
     stage('Build Application') {
-      when {
-        branch 'main'
-      }
+      
       steps {
         // def version = env.GIT_TAG ?: "${env.BUILD_NUMBER ?: 'latest'}"
         // echo "Building version: ${version}"
