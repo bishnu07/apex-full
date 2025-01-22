@@ -23,6 +23,7 @@ pipeline {
         }
       }
         stage('Install Dependencies') {
+            echo "Tag version ${env.GIT_TAG }"
             when {
                 branch 'master'
             }
