@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-      stage{
+      stage("Check tag"){
        steps {
             script {
                     // Dynamically the GIT_TAG
