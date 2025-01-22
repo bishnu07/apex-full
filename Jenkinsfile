@@ -13,7 +13,7 @@ pipeline {
             script {
                     // Dynamically the GIT_TAG
                     env.GIT_TAG = sh(script: "git describe --tags --exact-match || echo ''", returnStdout: true).trim()
-                    
+                    echo "Tag version ${env.GIT_TAG }"
                     if (!env.GIT_TAG) {
                         echo "Not a tag push. Skipping build."
                         currentBuild.result = 'NOT_BUILT'
@@ -23,7 +23,7 @@ pipeline {
         }
       }
         stage('Install Dependencies') {
-            echo "Tag version ${env.GIT_TAG }"
+            
             when {
                 branch 'master'
             }
