@@ -18,7 +18,6 @@ pipeline {
                         return
                     }
                 }
-            }
         }
         stage('Install Dependencies') {
             when {
