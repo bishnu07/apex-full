@@ -34,8 +34,8 @@ pipeline {
                 branch 'master'
             }
             steps {
-                def version = env.GIT_TAG ?: "${env.BUILD_NUMBER ?: 'latest'}"
-                echo "Building version: ${version}"
+                // def version = env.GIT_TAG ?: "${env.BUILD_NUMBER ?: 'latest'}"
+                // echo "Building version: ${version}"
                 echo 'Building the application...'
                 sh 'ng build --configuration=production'
             }
