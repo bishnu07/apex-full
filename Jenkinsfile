@@ -9,6 +9,7 @@ pipeline {
     stages {
       stage("Check tag"){
        steps {
+           echo 'Checking newly created tag'
             script {
                     // Dynamically the GIT_TAG
                     env.GIT_TAG = sh(script: "git describe --tags --exact-match || echo ''", returnStdout: true).trim()
