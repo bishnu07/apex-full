@@ -15,28 +15,28 @@ pipeline {
                 bat 'set'      // For Windows
             }
         }
-    stage("Check tag") {
-      steps {
-         echo "Tag version ${env.GIT_TAG } build ${env.BUILD_NUMBER ?: 'latest'}"
-        script {
-          // Dynamically the GIT_TAG
-          GIT_TAG = bat(script: 'git describe --tags --exact-match')
-          echo "Tag version ${GIT_TAG }"
-          if (!env.GIT_TAG) {
-            echo "Not a tag push. Skipping build."
-            currentBuild.result = 'NOT_BUILT'
-            return
-          }
-        }
-      }
-    }
+    // stage("Check tag") {
+    //   steps {
+    //      echo "Tag version ${env.GIT_TAG } build ${env.BUILD_NUMBER ?: 'latest'}"
+    //     script {
+    //       // Dynamically the GIT_TAG
+    //       GIT_TAG = bat(script: 'git describe --tags --exact-match')
+    //       echo "Tag version ${GIT_TAG }"
+    //       if (!env.GIT_TAG) {
+    //         echo "Not a tag push. Skipping build."
+    //         currentBuild.result = 'NOT_BUILT'
+    //         return
+    //       }
+    //     }
+    //   }
+    // }
     stage('Install Dependencies') {
       when {
         branch 'master'
       }
       steps {
         echo 'Installing dependencies...'
-        sh 'npm install --force'
+        bat 'npm install --force'
       }
     }
 
@@ -48,14 +48,14 @@ pipeline {
         // def version = env.GIT_TAG ?: "${env.BUILD_NUMBER ?: 'latest'}"
         // echo "Building version: ${version}"
         echo 'Building the application...'
-        sh 'ng build --configuration=production'
+        bat 'ng build --configuration=production'
       }
     }
 
     stage('Package Application') {
       steps {
         echo 'Packaging the application...'
-        sh 'zip -r dist.zip dist'
+        bat 'zip -r dist.zip dist'
       }
     }
 
