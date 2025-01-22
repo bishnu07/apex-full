@@ -31,7 +31,6 @@ pipeline {
       }
     }
     stage('Install Dependencies') {
-
       when {
         branch 'master'
       }
