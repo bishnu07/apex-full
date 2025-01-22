@@ -7,6 +7,7 @@ pipeline {
     }
 
     stages {
+      stage{
        steps {
             script {
                     // Dynamically the GIT_TAG
@@ -19,6 +20,7 @@ pipeline {
                     }
                 }
         }
+      }
         stage('Install Dependencies') {
             when {
                 branch 'master'
