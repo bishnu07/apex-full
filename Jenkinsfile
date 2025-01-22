@@ -32,7 +32,7 @@ pipeline {
     // }
     stage('Install Dependencies') {
       when {
-        branch 'master'
+        branch 'main'
       }
       steps {
         echo 'Installing dependencies...'
@@ -42,7 +42,7 @@ pipeline {
 
     stage('Build Application') {
       when {
-        branch 'master'
+        branch 'main'
       }
       steps {
         // def version = env.GIT_TAG ?: "${env.BUILD_NUMBER ?: 'latest'}"
@@ -55,7 +55,7 @@ pipeline {
     stage('Package Application') {
       steps {
         echo 'Packaging the application...'
-        bat 'zip -r dist.zip dist'
+        sh 'zip -r dist.zip dist'
       }
     }
 
