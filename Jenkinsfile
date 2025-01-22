@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage("Check tag") {
       steps {
-         echo "Tag version ${env.GIT_TAG }"
+         echo "Tag version ${env.GIT_TAG } build ${env.BUILD_NUMBER ?: 'latest'}"
         // script {
         //   // Dynamically the GIT_TAG
         //   env.GIT_TAG = sh(script: "git describe --tags --exact-match || echo ''", returnStdout: true).trim()
