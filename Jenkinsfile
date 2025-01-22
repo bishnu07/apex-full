@@ -20,7 +20,7 @@ pipeline {
          echo "Tag version ${env.GIT_TAG } build ${env.BUILD_NUMBER ?: 'latest'}"
         script {
           // Dynamically the GIT_TAG
-           GIT_TAG = bat(script: 'git describe --tags --exact-match || echo.', returnStdout: true).trim()
+          GIT_TAG = bat(script: 'git describe --tags --exact-match)
           echo "Tag version ${GIT_TAG }"
           if (!env.GIT_TAG) {
             echo "Not a tag push. Skipping build."
