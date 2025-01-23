@@ -27,7 +27,7 @@ pipeline {
           //   currentBuild.result = 'NOT_BUILT'
           //   return
           // }
-          bat 'git describe --tags --exact-match'
+          bat 'git describe --tags'
         }
       }
     }
