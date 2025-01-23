@@ -52,7 +52,7 @@ pipeline {
       steps {
         echo 'Packaging the application...'
          powershell 'Compress-Archive -Path dist/* -DestinationPath dist.zip'
-        // sh 'zip -r dist.zip dist'
+        // sh 'zip -r dist.zip dist'//
       }
     }
 
