@@ -31,38 +31,38 @@ pipeline {
         }
       }
     }
-//     stage('Install Angular CLI') {
-//   steps {
-//     echo 'Installing Angular CLI...'
-//     bat 'npm install -g @angular/cli@14'
-//   }
-// }
+    stage('Install Angular CLI') {
+  steps {
+    echo 'Installing Angular CLI...'
+    bat 'npm install -g @angular/cli@14'
+  }
+}
 
-    // stage('Install Dependencies') {
+    stage('Install Dependencies') {
       
-    //   steps {
-    //     echo 'Installing dependencies...'
-    //     bat 'npm install --force'
-    //   }
-    // }
+      steps {
+        echo 'Installing dependencies...'
+        bat 'npm install --force'
+      }
+    }
 
-    // stage('Build Application') {
+    stage('Build Application') {
       
-    //   steps {
-    //     // def version = env.GIT_TAG ?: "${env.BUILD_NUMBER ?: 'latest'}"
-    //     // echo "Building version: ${version}"
-    //     echo 'Building the application...'
-    //     bat 'ng build --configuration=production'
-    //   }
-    // }
+      steps {
+        // def version = env.GIT_TAG ?: "${env.BUILD_NUMBER ?: 'latest'}"
+        // echo "Building version: ${version}"
+        echo 'Building the application...'
+        bat 'ng build --configuration=production'
+      }
+    }
 
-    // stage('Package Application') {
-    //   steps {
-    //     echo 'Packaging the application...'
-    //      powershell 'Compress-Archive -Path dist/* -DestinationPath dist.zip'
-    //     // sh 'zip -r dist.zip dist'
-    //   }
-    // }
+    stage('Package Application') {
+      steps {
+        echo 'Packaging the application...'
+         powershell 'Compress-Archive -Path dist/* -DestinationPath dist.zip'
+        // sh 'zip -r dist.zip dist'
+      }
+    }
 
     // stage('Build Docker Image') {
     //     steps {
