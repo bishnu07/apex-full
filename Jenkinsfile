@@ -8,13 +8,13 @@ pipeline {
   }
 
   stages {
-    stage('Show Env Variables') {
-            steps {
-               // sh 'printenv'  // For Linux/macOS
-                // OR
-                bat 'set'      // For Windows
-            }
-        }
+    // stage('Show Env Variables') {
+    //         steps {
+    //            // sh 'printenv'  // For Linux/macOS
+    //             // OR
+    //             bat 'set'      // For Windows
+    //         }
+    //     }
     stage("Check tag") {
       steps {
          echo "Tag version ${env.GIT_TAG } build ${env.BUILD_NUMBER ?: 'latest'}"
