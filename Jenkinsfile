@@ -59,7 +59,7 @@ pipeline {
     stage('Package Application') {
       steps {
         echo 'Packaging the application...'
-         powershell 'Compress-Archive -Path dist/* -DestinationPath dist.zip'
+         powershell 'Compress-Archive -Path dist/* -DestinationPath dist.zip -Force'
         // sh 'zip -r dist.zip dist'
       }
     }
