@@ -112,13 +112,17 @@ pipeline {
        //          bat 'npm install -g @angular/cli@14'
        //      }
        // }
-       stage('Cache Node Modules') {
+      stage('Cache Node Modules') {
     steps {
-        script {
-            jobCacher path: "${env.NODE_MODULES_CACHE}", key: "node-modules-cache-${env.GIT_BRANCH}"
+        cache(
+            path: 'node_modules',
+            key: "node-modules-${env.GIT_BRANCH}"
+        ) {
+            sh 'npm install'
         }
     }
 }
+
 
 
         stage('Install Dependencies') {
