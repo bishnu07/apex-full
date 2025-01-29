@@ -114,14 +114,25 @@ pipeline {
        // }
       stage('Cache Node Modules') {
     steps {
-        cache(
-            path: 'node_modules',
-            key: "node-modules-${env.GIT_BRANCH}"
-        ) {
-            sh 'npm install'
+        script {
+            if (fileExists('node_modules')) {
+                stash name: 'node_modules_cache', includes: 'node_modules/**'
+            } else {
+                sh 'npm install'
+                stash name: 'node_modules_cache', includes: 'node_modules/**'
+            }
         }
     }
 }
+
+stage('Restore Cache') {
+    steps {
+        script {
+            unstash 'node_modules_cache'
+        }
+    }
+}
+
 
 
 
