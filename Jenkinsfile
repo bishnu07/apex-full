@@ -106,21 +106,20 @@ pipeline {
     }
 
     stages {
-        stage('Install Angular CLI') {
-            steps {
-                echo 'Installing Angular CLI...'
-                bat 'npm install -g @angular/cli@14'
-            }
-       }
-        stage('Cache Node Modules') {
-            steps {
-                // Use Job Cacher Plugin to cache node_modules
-                jobCacher(
-                    path: "${env.NODE_MODULES_CACHE}",
-                    key: "node-modules-cache-${env.GIT_BRANCH}" // Cache based on branch
-                )
-            }
+       //  stage('Install Angular CLI') {
+       //      steps {
+       //          echo 'Installing Angular CLI...'
+       //          bat 'npm install -g @angular/cli@14'
+       //      }
+       // }
+       stage('Cache Node Modules') {
+    steps {
+        script {
+            jobCacher path: "${env.NODE_MODULES_CACHE}", key: "node-modules-cache-${env.GIT_BRANCH}"
         }
+    }
+}
+
 
         stage('Install Dependencies') {
             steps {
