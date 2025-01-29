@@ -118,7 +118,7 @@ pipeline {
             if (fileExists('node_modules')) {
                 stash name: 'node_modules_cache', includes: 'node_modules/**'
             } else {
-                sh 'npm install'
+                bat 'npm install'
                 stash name: 'node_modules_cache', includes: 'node_modules/**'
             }
         }
