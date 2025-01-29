@@ -106,12 +106,12 @@ pipeline {
     }
 
     stages {
-       //  stage('Install Angular CLI') {
-       //      steps {
-       //          echo 'Installing Angular CLI...'
-       //          bat 'npm install -g @angular/cli@14'
-       //      }
-       // }
+        stage('Install Angular CLI') {
+            steps {
+                echo 'Installing Angular CLI...'
+                bat 'npm install -g @angular/cli@14'
+            }
+       }
       stage('Cache Node Modules') {
     steps {
         script {
