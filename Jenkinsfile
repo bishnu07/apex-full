@@ -149,18 +149,20 @@ pipeline {
                 //     #Install or update dependencies
                 //     npm install --force
                 // '''
-              bat 'npm install --force'
+              bat 'npm ci --force'
             }
         }
 
         stage('Build Code') {
             steps {
                 // Builds the Angular project for production
-                sh '''
-                    set -e
-                    ng build --configuration=production             # Build Angular project
-                    powershell 'Compress-Archive -Path dist/* -DestinationPath dist.zip -Force'                            # Package the dist folder
-                '''
+                // sh '''
+                //     set -e
+                //     ng build --configuration=production             # Build Angular project
+                //     powershell 'Compress-Archive -Path dist/* -DestinationPath dist.zip -Force'                            # Package the dist folder
+                // '''
+              bat 'ng build --configuration=production'
+              powershell 'Compress-Archive -Path dist/* -DestinationPath dist.zip -Force'
             }
         }
 
