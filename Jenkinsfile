@@ -147,7 +147,7 @@ pipeline {
                 // Install dependencies using cached node_modules
                 sh '''
                     set -e
-                    # Install or update dependencies
+                    #Install or update dependencies
                     npm install --force
                 '''
             }
