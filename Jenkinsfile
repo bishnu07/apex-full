@@ -110,7 +110,7 @@ pipeline {
         stage('Install Angular CLI') {
             steps {
                 echo 'Installing Angular CLI...'
-                bat '${env.INSTALL} -g @angular/cli@14'
+                bat "${env.INSTALL} -g @angular/cli@14"
             }
        }
 
