@@ -112,29 +112,34 @@ pipeline {
                 bat 'npm install -g @angular/cli@14'
             }
        }
-      stage('Cache Node Modules') {
-    steps {
-        script {
-            if (fileExists('node_modules')) {
-                stash name: 'node_modules_cache', includes: 'node_modules/**'
-            } else {
-                sh 'npm install'
-                stash name: 'node_modules_cache', includes: 'node_modules/**'
+
+      stage('Clone Repo') {
+            steps {
+                // Clones the repository from Bitbucket using the specified credentials ID
+                git url: 'https://github.com/bishnu07/apex-full'
             }
         }
-    }
-}
+      
+//       stage('Cache Node Modules') {
+//     steps {
+//         script {
+//             if (fileExists('node_modules')) {
+//                 stash name: 'node_modules_cache', includes: 'node_modules/**'
+//             } else {
+//                 sh 'npm install'
+//                 stash name: 'node_modules_cache', includes: 'node_modules/**'
+//             }
+//         }
+//     }
+// }
 
-stage('Restore Cache') {
-    steps {
-        script {
-            unstash 'node_modules_cache'
-        }
-    }
-}
-
-
-
+// stage('Restore Cache') {
+//     steps {
+//         script {
+//             unstash 'node_modules_cache'
+//         }
+//     }
+// }
 
         stage('Install Dependencies') {
             steps {
@@ -142,7 +147,7 @@ stage('Restore Cache') {
                 sh '''
                     set -e
                     # Install or update dependencies
-                    npm install --force
+                    npm ci --force
                 '''
             }
         }
