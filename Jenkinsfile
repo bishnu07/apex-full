@@ -148,7 +148,7 @@ pipeline {
                 sh '''
                     set -e
                     # Install or update dependencies
-                    npm ci --force
+                    npm install --force
                 '''
             }
         }
