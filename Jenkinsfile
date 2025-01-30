@@ -113,12 +113,12 @@ pipeline {
             }
        }
 
-      stage('Clone Repo') {
-            steps {
-                // Clones the repository from Bitbucket using the specified credentials ID
-                git url: 'https://github.com/bishnu07/apex-full'
-            }
-        }
+      // stage('Clone Repo') {
+      //       steps {
+      //           // Clones the repository from Bitbucket using the specified credentials ID
+      //           git url: 'https://github.com/bishnu07/apex-full'
+      //       }
+      //   }
       
 //       stage('Cache Node Modules') {
 //     steps {
