@@ -103,13 +103,14 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'ODEDTECH-DOCKERHUBPASWORD'
         NVM_DIR = '/var/lib/jenkins/.nvm'
         NODE_MODULES_CACHE = "${WORKSPACE}/.cache/node_modules" // Define cache location
+        INSTALL = 'npm install'
     }
 
     stages {
         stage('Install Angular CLI') {
             steps {
                 echo 'Installing Angular CLI...'
-                bat 'npm install -g @angular/cli@14'
+                bat '${env.INSTALL} -g @angular/cli@14'
             }
        }
 
