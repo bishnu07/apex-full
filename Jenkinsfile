@@ -144,12 +144,12 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Install dependencies using cached node_modules
-                sh '''
-                    set -e
-                    #Install or update dependencies
-                    npm install --force
-                '''
+                // sh '''
+                //     set -e
+                //     #Install or update dependencies
+                //     npm install --force
+                // '''
+              bat 'npm install --force'
             }
         }
 
